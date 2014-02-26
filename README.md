@@ -30,8 +30,12 @@ cd src
 ./start.sh</pre>
 
 That's basically it.
+For it to work, you'll need to install GNU expect.
+In Debian, this is simple: <code>apt-get install expect</code>
 The path kybot resides in shouldn't matter, but it's possible I fuck up and hardcode some shit and then it will not work.
 The above path is what I use.
+
+If you want to run kybot in the background, you can use screen.
 
 ### Writing modules
 Take a look at the example module in the <code>modules</code> folder. It should be self-explanatory. If it isn't, don't write a module.
