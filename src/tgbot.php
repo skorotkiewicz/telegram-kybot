@@ -43,7 +43,7 @@ class main {
 	
 	public function getCmd () {
 		redo:
-		$request = shell_exec('/var/script/wb-readtg/tgrecvmsg.xp | grep ">>>"');
+		$request = shell_exec('expects/tgrecvmsg.xp | grep ">>>"');
 		if(empty($request)) goto redo;
 		$reqArray = explode(" ",$request);
 	
@@ -74,18 +74,18 @@ class main {
 	public function reply ($type, $mesg) {
 		switch ($type) {
 			case 'imgstatic':  // Static image
-				shell_exec('/var/script/tgsendimg.xp '.$this->lastSender.' '.$image);
+				shell_exec('expects/tgsendimg.xp '.$this->lastSender.' '.$image);
 				break;
 				
 			case 'imgget': // Image from URL
 				shell_exec('wget --quiet -O /tmp/img.jpg '.$image);
-				shell_exec('/var/script/tgsendimg.xp '.$this->lastSender.' /tmp/img.jpg');
+				shell_exec('expects/tgsendimg.xp '.$this->lastSender.' /tmp/img.jpg');
 				shell_exec('rm /tmp/img.jpg');
 				break;
 				
 			case 'txt': // Standard message
 				$mesg = preg_replace( "/\r|\n/", " ", $mesg);
-				shell_exec('/var/script/tgsendmsg.xp '.$this->lastSender.' "'.$mesg.'"');
+				shell_exec('expects/tgsendmsg.xp '.$this->lastSender.' "'.$mesg.'"');
 				break;
 				
 			default:
