@@ -1,5 +1,5 @@
 <?php
-class syn {
+class synack {
 
 	public $name 	= 'synack';
 	public $version = '0.01';
